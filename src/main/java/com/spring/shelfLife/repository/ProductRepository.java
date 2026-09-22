@@ -1,6 +1,6 @@
-package com.spring.shelfLife.repositories;
+package com.spring.shelfLife.repository;
 
-import com.spring.shelfLife.models.Product;
+import com.spring.shelfLife.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

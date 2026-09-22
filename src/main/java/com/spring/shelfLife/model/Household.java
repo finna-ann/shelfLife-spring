@@ -1,4 +1,4 @@
-package com.spring.shelfLife.models;
+package com.spring.shelfLife.model;
 
 import jakarta.persistence.*;
 import lombok.*;

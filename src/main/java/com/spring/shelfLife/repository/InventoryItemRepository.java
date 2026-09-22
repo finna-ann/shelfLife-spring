@@ -1,7 +1,7 @@
-package com.spring.shelfLife.repositories;
+package com.spring.shelfLife.repository;
 
-import com.spring.shelfLife.models.InventoryItem;
-import com.spring.shelfLife.types.ItemDisposition;
+import com.spring.shelfLife.model.InventoryItem;
+import com.spring.shelfLife.type.ItemDisposition;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

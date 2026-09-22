@@ -1,6 +1,6 @@
-package com.spring.shelfLife.models;
+package com.spring.shelfLife.model;
 
-import com.spring.shelfLife.types.HouseholdRole;
+import com.spring.shelfLife.type.HouseholdRole;
 import jakarta.persistence.*;
 import lombok.*;
 

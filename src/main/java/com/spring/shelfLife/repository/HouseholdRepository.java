@@ -1,6 +1,6 @@
-package com.spring.shelfLife.repositories;
+package com.spring.shelfLife.repository;
 
-import com.spring.shelfLife.models.Household;
+import com.spring.shelfLife.model.Household;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
