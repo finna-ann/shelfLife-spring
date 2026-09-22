@@ -1,4 +1,4 @@
-package com.spring.shelfLife.models;
+package com.spring.shelfLife.types;
 
 public enum HouseholdRole {
     OWNER,

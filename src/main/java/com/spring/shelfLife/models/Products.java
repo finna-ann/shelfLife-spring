@@ -2,16 +2,17 @@ package com.spring.shelfLife.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.Instant;
 
 @Entity
-@Table(name = "household")
+@Table(name = "products")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Household {
+public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,10 +20,13 @@ public class Household {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true, length = 8)
-    private String inviteCode;
+    @Column(unique = true)
+    private String barcode;
 
-    @Column(nullable = false,updatable = false)
+    @Column
+    private String category;
+
+    @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
     @PrePersist

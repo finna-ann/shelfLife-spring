@@ -1,5 +1,6 @@
 package com.spring.shelfLife.models;
 
+import com.spring.shelfLife.types.HouseholdRole;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,11 +20,11 @@ public class HouseholdMembers {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id",nullable = false)
-    private User user;
+    private Users user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "household_id",nullable = false)
-    private Household household;
+    private Households household;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
