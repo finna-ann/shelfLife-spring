@@ -11,7 +11,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Households {
+public class Household {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
