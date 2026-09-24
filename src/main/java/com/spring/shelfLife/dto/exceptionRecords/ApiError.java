@@ -12,11 +12,7 @@ public record ApiError(
         String path,
         OffsetDateTime timestamp
 ) {
-    public static ApiError of(HttpStatus status, String error, String message, String path){
-        return new ApiError(status, error, message, path, OffsetDateTime.now(ZoneOffset.UTC));
-    }
-
-    public static ApiError of(HttpStatus status, String error, String message){
-        return new ApiError(status, error ,message, null, OffsetDateTime.now(ZoneOffset.UTC));
+    public static ApiError of(HttpStatus status, String message, String path) {
+        return new ApiError(status, status.getReasonPhrase(), message, path, OffsetDateTime.now(ZoneOffset.UTC));
     }
 }
