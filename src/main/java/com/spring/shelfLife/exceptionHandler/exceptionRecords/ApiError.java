@@ -1,4 +1,4 @@
-package com.spring.shelfLife.dto.exceptionRecords;
+package com.spring.shelfLife.exceptionHandler.exceptionRecords;
 
 import org.springframework.http.HttpStatus;
 

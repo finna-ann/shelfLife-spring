@@ -1,4 +1,4 @@
-package com.spring.shelfLife.exceptionHandler;
+package com.spring.shelfLife.exceptionHandler.customExceptions;
 
 public class DuplicateResourceException extends RuntimeException {
     public DuplicateResourceException(String message) {

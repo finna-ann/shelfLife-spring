@@ -1,6 +1,8 @@
 package com.spring.shelfLife.exceptionHandler;
 
-import com.spring.shelfLife.dto.exceptionRecords.ApiError;
+import com.spring.shelfLife.exceptionHandler.customExceptions.DuplicateResourceException;
+import com.spring.shelfLife.exceptionHandler.customExceptions.ResourceNotFoundException;
+import com.spring.shelfLife.exceptionHandler.exceptionRecords.ApiError;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
