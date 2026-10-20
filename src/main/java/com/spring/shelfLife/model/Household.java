@@ -3,6 +3,7 @@ package com.spring.shelfLife.model;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.Instant;
+import java.util.UUID;
 
 @Entity
 @Table(name = "households")
@@ -13,16 +14,16 @@ import java.time.Instant;
 @Builder
 public class Household {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
-    @Column(nullable = false)
+    @Column(name = "household_name", nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true, length = 8)
+    @Column(name = "invite_code",nullable = false, unique = true, length = 8)
     private String inviteCode;
 
-    @Column(nullable = false,updatable = false)
+    @Column(name = "created_at",nullable = false,updatable = false)
     private Instant createdAt;
 
     @PrePersist

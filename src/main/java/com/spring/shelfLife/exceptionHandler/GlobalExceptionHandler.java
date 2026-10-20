@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({DuplicateResourceException.class})
     public ResponseEntity<ApiError> handleDuplicateResourceException(DuplicateResourceException ex, HttpServletRequest request) {
-        logger.warn("Duplicate Resource Exception : {}", ex.getClass().getName());
+        logger.info("Duplicate Resource Exception : {}", ex.getClass().getName());
         ApiError duplicateResource = ApiError.of(HttpStatus.CONFLICT, ex.getMessage(), request.getRequestURI());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(duplicateResource);
     }
@@ -61,21 +61,21 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiError> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) {
         List<String> errors = ex.getBindingResult().getFieldErrors().stream().map(FieldError::getDefaultMessage).collect(Collectors.toList());
         String message = String.join(",", errors);
-        logger.warn("Method Argument Not Valid Exception : Error Stack : {} Message : {}",errors, message);
+        logger.debug("Method Argument Not Valid Exception : Error Stack : {} Message : {}",errors, message);
         ApiError methodArgumentsNotValid = ApiError.of(HttpStatus.BAD_REQUEST, message, request.getRequestURI());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(methodArgumentsNotValid);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiError> handleIllegalArgumentException(IllegalArgumentException ex, HttpServletRequest request) {
-        logger.error("Illegal Argument Exception : {}", ex.getClass().getName());
+        logger.debug("Illegal Argument Exception : {}", ex.getClass().getName());
         ApiError badRequestError = ApiError.of(HttpStatus.BAD_REQUEST,ex.getMessage(), request.getRequestURI());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(badRequestError);
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> handleException(Exception ex, HttpServletRequest request) {
-        logger.error("Unhandled Exception", ex);
+        logger.debug("Unhandled Exception", ex);
         String path = "prod".equalsIgnoreCase(activeEnv) ? null : request.getRequestURI();
         ApiError internalServerError =  ApiError.of(
                 HttpStatus.INTERNAL_SERVER_ERROR,

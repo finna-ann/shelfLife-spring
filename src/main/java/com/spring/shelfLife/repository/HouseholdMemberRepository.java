@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface HouseholdMemberRepository extends JpaRepository<HouseholdMember, Long> {
-    List<HouseholdMember> findByUserId(Long userId);
-    List<HouseholdMember> findByHouseholdId(Long householdId);
-    Optional<HouseholdMember> findByUserIdAndHouseholdId(Long user, Long householdId);
-    boolean existsByUserIdAndHouseholdId(Long user, Long householdId);
+    List<HouseholdMember> findByUserId(UUID userId);
+    List<HouseholdMember> findByHouseholdId(UUID householdId);
+    Optional<HouseholdMember> findByUserIdAndHouseholdId(UUID user, UUID householdId);
+    boolean existsByUserIdAndHouseholdId(UUID user, UUID householdId);
 }

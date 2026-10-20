@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Entity
 @Table(name = "household_members", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "household_id"}))
@@ -15,8 +16,8 @@ import java.time.Instant;
 @Builder
 public class HouseholdMember {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id",nullable = false)
@@ -27,10 +28,10 @@ public class HouseholdMember {
     private Household household;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "household_role", nullable = false)
     private HouseholdRole role;
 
-    @Column(nullable = false,updatable = false)
+    @Column(name = "joined_at", nullable = false,updatable = false)
     private Instant joinedAt;
 
     @PrePersist

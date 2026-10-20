@@ -7,6 +7,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "inventory")
@@ -17,8 +18,8 @@ import java.time.LocalDate;
 @Builder
 public class InventoryItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "household_id",nullable = false)
@@ -32,26 +33,26 @@ public class InventoryItem {
     @JoinColumn(name = "added_by_user_id", nullable = false)
     private User addedBy;
 
-    @Column(nullable = false)
+    @Column(name = "quantity" , nullable = false)
     private Integer quantity;
 
-    @Column(nullable = false)
+    @Column(name = "unit",nullable = false)
     private String unit;
 
-    @Column
+    @Column(name = "price")
     private BigDecimal price;
 
-    @Column(nullable = false)
+    @Column(name = "expiration_date",nullable = false)
     private LocalDate expirationDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "item_disposition",nullable = false)
     private ItemDisposition disposition = ItemDisposition.UNUSED;
 
-    @Column(nullable = false)
+    @Column(name = "created_at",nullable = false)
     private Instant createdAt;
 
-    @Column
+    @Column(name = "disposed_at")
     private Instant disposedAt;
 
     @PrePersist

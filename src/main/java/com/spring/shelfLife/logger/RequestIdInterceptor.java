@@ -3,7 +3,6 @@ package com.spring.shelfLife.logger;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.MDC;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -12,12 +11,15 @@ import java.util.UUID;
 @Component
 public class RequestIdInterceptor implements HandlerInterceptor {
 
-    @Autowired
-    private RequestIdLogger httpRequestIdLogger;
+    private final RequestIdLogger httpRequestIdLogger;
 
     public static final String REQUEST_ID_HEADER = "X-Request-Id";
     public static final String MDC_KEY_REQUEST_ID = "requestId";
     public static final String START_TIME_ATTR = "startTime";
+
+    public RequestIdInterceptor(RequestIdLogger httpRequestIdLogger) {
+        this.httpRequestIdLogger = httpRequestIdLogger;
+    }
 
 
     @Override
