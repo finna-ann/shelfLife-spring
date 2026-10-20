@@ -1,4 +1,4 @@
-package com.spring.shelfLife.security;
+package com.spring.shelfLife.service.userService;
 
 import com.spring.shelfLife.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

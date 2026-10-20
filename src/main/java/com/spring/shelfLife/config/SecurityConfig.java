@@ -1,8 +1,8 @@
 package com.spring.shelfLife.config;
 
-import com.spring.shelfLife.security.CustomUserDetailsService;
+import com.spring.shelfLife.service.userService.CustomUserDetailsService;
 import com.spring.shelfLife.security.JwtAuthFilter;
-import com.spring.shelfLife.security.JwtService;
+import com.spring.shelfLife.service.auth.JwtService;
 import com.spring.shelfLife.type.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.spring.shelfLife.security;
+package com.spring.shelfLife.service.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
