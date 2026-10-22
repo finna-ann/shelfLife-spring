@@ -34,13 +34,13 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/","/signup","/login").permitAll()
+                        .requestMatchers("/","register","/login").permitAll()
                         .requestMatchers("/api/auth/user/**").authenticated()
-                        .requestMatchers("/api/auth/admin/**").authenticated().anyRequest().hasRole(UserRole.ADMIN.name())
+                        .requestMatchers("/api/auth/admin/**").hasRole(UserRole.ADMIN.name()).anyRequest().authenticated()
                 )
                 .sessionManagement(sm-> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(daoAuthenticationProvider())
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -59,7 +59,7 @@ public class SecurityConfig {
 
     @Bean
     public JwtAuthFilter jwtAuthFilter() throws Exception{
-        return new JwtAuthFilter(customUserDetailsService,jwtService);
+        return new JwtAuthFilter(jwtService, customUserDetailsService);
     }
     
     @Bean

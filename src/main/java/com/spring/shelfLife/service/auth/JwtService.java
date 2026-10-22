@@ -63,12 +63,15 @@ public class JwtService {
 
     public String generateAccessToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
+        claims.put("type", "access");
         claims.put("roles",userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority).toList());
         return buildToken(claims, userDetails.getUsername(),accessTokenExpiration);
     }
 
     public String generateRefreshToken(UserDetails userDetails) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("type","refresh");
         return buildToken(Collections.emptyMap(),userDetails.getUsername(), refreshTokenExpiration);
     }
 

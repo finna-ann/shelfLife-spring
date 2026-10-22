@@ -1,9 +1,11 @@
 package com.spring.shelfLife.dto.auth;
 
+import java.util.UUID;
+
 public record AuthResponse(
-        String token,
-        Long userId,
-        String email,
+        String accessToken,
+        String refreshToken,
+        UUID userId,
         String username
 ) {
 }

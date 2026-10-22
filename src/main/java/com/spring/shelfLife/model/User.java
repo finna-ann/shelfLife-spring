@@ -32,6 +32,9 @@ public class User implements UserDetails {
     @Column(name = "email", nullable = false,unique = true)
     private String email;
 
+    @Column(name = "role", nullable = false)
+    private UserRole role = UserRole.USER;
+
     @Column(name = "created_at" , nullable = false,updatable = false)
     private Instant createdAt;
 
@@ -50,10 +53,9 @@ public class User implements UserDetails {
         updatedAt = Instant.now();
     }
 
-    @Enumerated(EnumType.STRING)
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(UserRole.USER.toString()));
+        return List.of(new SimpleGrantedAuthority("ROLE" + role.name()));
     }
 
     @Override
